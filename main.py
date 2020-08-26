@@ -14,7 +14,7 @@ class MyClient(discord.Client):
             return
 
         if message.content.lower() == 'ping':
-            await message.channel.send('pong')
+            await message.channel.send('pong pong')
 
 
 client = MyClient()
