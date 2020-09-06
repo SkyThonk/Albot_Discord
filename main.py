@@ -5,19 +5,19 @@ import asyncio
 import os
 
 
-class MyClient(discord.Client):
-    async def on_ready(self):
-        print('Logged on as', self.user)
+client = commands.Bot(command_prefix = '$')
 
-    async def on_message(self, message):
-        if message.author == self.user:
-            return
+@client.event
+async def on_ready():
+    print('We have logged in as {0.user}'.format(client))
 
-        if message.content.lower() == 'ping':
-            await message.channel.send('pong pong')
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
 
-
-client = MyClient()
+    if message.content == "hello":
+        await message.channel.send('Hello!')
 
 keep_alive.keep_alive()
 token = os.environ.get("Token")
