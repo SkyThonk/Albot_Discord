@@ -17,12 +17,19 @@ class MyClient(discord.Client):
         if message.content.lower() == 'ping':
             await message.channel.send('pong pong')
         
-        if message.channel.id == 428432032276938753 or message.channel.id == 747078225372643399:
-            qsql.insert_data(message.content)
-            await message.channel.send('data saved suscess')
+        if message.content.lower() == 'saveid':
+            qsql.insert_game_id(message.author.id)
+            emd = discord.Embed(title="Game ID",description = "Record Created Suscessfully", color = 0x00ff00)
+            emd.add_feild(name = "Valorant", value="Please enter",inline = False)
+            await message.channel.send(embed = emd)
+        
+        
+        # if message.channel.id == 428432032276938753 or message.channel.id == 747078225372643399:
+        #     qsql.insert_data(message.content)
+        #     await message.channel.send('data saved suscess')
 
-        if message.content == 'showdata':
-            await message.channel.send(str(qsql.show_data()))
+        # if message.content == 'showdata':
+        #     await message.channel.send(str(qsql.show_data()))
 
 
 
