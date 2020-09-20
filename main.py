@@ -20,7 +20,7 @@ class MyClient(discord.Client):
         if message.content.lower() == '$saveid':
             if qsql.search_game_id(message.author.id) == None:
                 qsql.insert_game_id(message.author.id)
-                emd = discord.Embed(title="Game ID",description = "Record created Suscessfully!!\nUse the following commands to save game your game ids", color = 0x00ff00)
+                emd = discord.Embed(title="Game ID",description = "Record created Suscessfully!!\nUse the following commands to save your game ids", color = 0x00ff00)
                 emd.add_field(name = "Valorant", value="$valorant {Id here}",inline = False)
                 emd.add_field(name = "Rockstar", value="$rockstar {Id here}",inline = False)
                 emd.add_field(name = "Epic Games", value="$epic {Id here}",inline = False)
@@ -28,16 +28,12 @@ class MyClient(discord.Client):
                 await message.channel.send(embed = emd)
             else:
                  await message.channel.send("Your record has been already created!!")
+            
+        if message.content.lower() == '$showid':
+            await message.channel.send(str(qsql.search_game_id(message.author.id)))
         
         if message.content.lower() == '$deleteid':
             qsql.dele()
-        # if message.channel.id == 428432032276938753 or message.channel.id == 747078225372643399:
-        #     qsql.insert_data(message.content)
-        #     await message.channel.send('data saved suscess')
-
-        # if message.content == 'showdata':
-        #     await message.channel.send(str(qsql.show_data()))
-
 
 
 client = MyClient()
