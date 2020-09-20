@@ -21,6 +21,10 @@ class MyClient(discord.Client):
             qsql.insert_data(message.content)
             await message.channel.send('data saved suscess')
 
+        if message.content == 'showdata':
+            await message.channel.send(str(qsql.show_data()))
+
+
 
 client = MyClient()
 
