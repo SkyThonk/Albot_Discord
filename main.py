@@ -18,10 +18,13 @@ class MyClient(discord.Client):
             await message.channel.send('pong pong')
         
         if message.content.lower() == 'saveid':
-            qsql.insert_game_id(message.author.id)
-            emd = discord.Embed(title="Game ID",description = "Record Created Suscessfully", color = 0x00ff00)
-            emd.add_field(name = "Valorant", value="Please enter",inline = False)
-            await message.channel.send(embed = emd)
+            if qsql.search_game_id(message.author.id) == None:
+                qsql.insert_game_id(message.author.id)
+                emd = discord.Embed(title="Game ID",description = "Record Created Suscessfully", color = 0x00ff00)
+                emd.add_field(name = "Valorant", value="Please enter",inline = False)
+                await message.channel.send(embed = emd)
+            else:
+                 await message.channel.send("Your Record has been Already Created")
         
         if message.content.lower() == 'deleteid':
             qsql.dele()

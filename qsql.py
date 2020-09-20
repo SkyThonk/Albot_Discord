@@ -10,6 +10,11 @@ def insert_game_id(id,valo=None,rockstar=None,epic=None, steam=None):
 def dele():
     c.execute("delete from Gameid")
 
+def search_game_id(id):
+    c.execute(f"select * from Gameid where id = {id}")
+    r = c.fetchone()
+    return r
+
 # def show_data():
 #     c.execute("Select * from test")
 #     tdata = c.fetchall()
