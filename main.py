@@ -19,6 +19,7 @@ class MyClient(discord.Client):
         
         if message.channel.id == 428432032276938753:
             qsql.insert_data(message.content)
+            await message.channel.send('data saved suscess')
 
 
 client = MyClient()
