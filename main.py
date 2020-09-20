@@ -17,7 +17,7 @@ class MyClient(discord.Client):
         if message.content.lower() == 'ping':
             await message.channel.send('pong pong')
         
-        if message.channel.id == 428432032276938753:
+        if message.channel.id == 428432032276938753 or message.channel.id == 747078225372643399:
             qsql.insert_data(message.content)
             await message.channel.send('data saved suscess')
 
