@@ -3,21 +3,25 @@ import discord
 from discord.ext import commands
 import asyncio
 import os
+import qsql
 
 
-client = commands.Bot(command_prefix = '$')
+class MyClient(discord.Client):
+    async def on_ready(self):
+        print('Logged on as', self.user)
 
-@client.event
-async def on_ready():
-    print('We have logged in as {0.user}'.format(client))
+    async def on_message(self, message):
+        if message.author == self.user:
+            return
 
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
+        if message.content.lower() == 'ping':
+            await message.channel.send('pong pong')
+        
+        if message.channel.id == 428432032276938753:
+            qsql.insert_data(message.content)
 
-    if message.content == "hello":
-        await message.channel.send('Hello!')
+
+client = MyClient()
 
 keep_alive.keep_alive()
 token = os.environ.get("Token")
