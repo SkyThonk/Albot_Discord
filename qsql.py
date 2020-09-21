@@ -35,12 +35,7 @@ def update_quote(quote,id):
     c.execute(f"update Gameid set quote = '{quote}' where id = {id}")
     conn.commit()
 
-# def show_data():
-#     c.execute("Select * from test")
-#     tdata = c.fetchall()
-#     return tdata
-
 # c.execute("Create table Gameid(id int primary key,valorant text, rockstar text, epic text, steam text)")
 # c.execute("Alter table Gameid add Quote text")
-conn.commit()
-conn.close()
+# conn.commit()
+# conn.close()
