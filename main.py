@@ -123,10 +123,13 @@ class MyClient(discord.Client):
             if len(message.content.split()) == 1:
                 await message.channel.send("Invalid Parameter!!")
             else:
-                l = message.content.split()
-                l = ' '.join(l[1:])
-                qsql.update_quote(l,message.author.id)
-                await message.channel.send("Saved suscessfully!!")
+                if qsql.search_game_id(message.author.id) != None:
+                    li = message.content.split()
+                    li = ' '.join(l[1:])
+                    qsql.update_quote(li,message.author.id)
+                    await message.channel.send("Saved suscessfully!!")
+                else:
+                    await message.channel.send("You did not created record first create record and try again!!")
 client = MyClient()
 
 keep_alive.keep_alive()
