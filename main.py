@@ -29,9 +29,6 @@ class MyClient(discord.Client):
             else:
                  await message.channel.send("Your record has been already created!!")
             
-        if message.content.lower() == '$showid':
-            await message.channel.send(str(qsql.search_game_id(message.author.id)))
-        
         if message.content.lower().split()[0] == '$valorant':
             if len(message.content.lower().split()) == 2 or len(message.content.lower().split()) == 3:
                 if qsql.search_game_id(message.author.id) != None:
@@ -92,7 +89,11 @@ class MyClient(discord.Client):
             else:
                 await message.channel.send("Invalid Parameter!!")
 
-
+        if message.content.lower().split()[0] == '$showid':
+            if len(message.content.lower().split()) == 1:
+                pass #await message.channel.send(str(qsql.search_game_id(message.author.id)))
+            else:
+                await message.channel.send(message.mention[0].id)
         
         if message.content.lower() == '$deleteid':
             qsql.dele()
