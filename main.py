@@ -43,7 +43,7 @@ class MyClient(discord.Client):
                             await message.channel.send("Looks like that's not a valid ID! Please try again!")
                     else:
                         if validity_check.valo_validity_check(message.content.split()[1] + message.content.split()[2]):
-                            qsql.update_valo(message.content.split()[1]+' '+message.content.split()[2],message.author.id)
+                            qsql.update_valo(message.content.split()[1] + ' ' + message.content.split()[2],message.author.id)
                             await message.channel.send("Saved suscessfully!!")
                         else:
                             await message.channel.send("Looks like that's not a valid ID! Please try again!")
