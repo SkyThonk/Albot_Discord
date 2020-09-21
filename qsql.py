@@ -3,7 +3,7 @@ import sqlite3
 conn = sqlite3.connect("botdata.db")
 
 c = conn.cursor()
-def insert_game_id(id,valo=None,rockstar=None,epic=None, steam=None):
+def insert_game_id(id,valo=None,rockstar=None,epic=None, steam=None,Quote="You can add your custom quote here by using $quote"):
     c.execute(f"insert into Gameid values({id},'{valo}','{rockstar}','{epic}','{steam}')")
     conn.commit()
 
@@ -31,12 +31,16 @@ def update_steam(gameid,id):
     c.execute(f"update Gameid set steam = '{gameid}' where id = {id}")
     conn.commit()
 
+def update_quote(quote,id):
+    c.execute(f"update Gameid set quote = '{quote}' where id = {id}")
+    conn.commit()
+
 # def show_data():
 #     c.execute("Select * from test")
 #     tdata = c.fetchall()
 #     return tdata
 
 # c.execute("Create table Gameid(id int primary key,valorant text, rockstar text, epic text, steam text)")
-
-# conn.commit()
-# conn.close()
+# c.execute("Alter table Gameid add Quote text")
+conn.commit()
+conn.close()
