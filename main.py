@@ -4,7 +4,7 @@ from discord.ext import commands
 import asyncio
 import os
 import qsql
-
+import validity_check
 
 class MyClient(discord.Client):
     async def on_ready(self):
@@ -34,8 +34,11 @@ class MyClient(discord.Client):
         
         if message.content.lower().split()[0] == '$valorant':
             if qsql.search_game_id(message.author.id) != None:
-                qsql.update_valo(message.content.split()[1],message.author.id)
-                await message.channel.send("Saved suscessfully!!")
+                if validity_check.valo_validity_check(message.content.split()[1]):
+                    qsql.update_valo(message.content.split()[1],message.author.id)
+                    await message.channel.send("Saved suscessfully!!")
+                else:
+                    await message.channel.send("Looks like that's not a valid ID! Please try again!")
             else:
                 await message.channel.send("You did not created record first create record and try again!!")
 
