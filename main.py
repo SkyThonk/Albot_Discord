@@ -125,7 +125,7 @@ class MyClient(discord.Client):
             else:
                 if qsql.search_game_id(message.author.id) != None:
                     li = message.content.split()
-                    li = ' '.join(l[1:])
+                    li = ' '.join(li[1:])
                     qsql.update_quote(li,message.author.id)
                     await message.channel.send("Saved suscessfully!!")
                 else:
