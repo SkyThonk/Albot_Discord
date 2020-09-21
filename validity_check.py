@@ -22,3 +22,13 @@ def valo_validity_check(str):
             return False
     else:
         return False
+
+
+def ID_validity_check(str):
+    if ' ' in str or str[0].isdigit():
+        return False
+    else:
+        if str.isalpha() or str.isalnum():
+            return True
+        else:
+            return False

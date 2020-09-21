@@ -18,6 +18,19 @@ def search_game_id(id):
 def update_valo(valo,id):
     c.execute(f"update Gameid set valorant = '{valo}' where id = {id}")
     conn.commit()
+
+def update_rockstar(rock,id):
+    c.execute(f"update Gameid set rockstar = '{rock}' where id = {id}")
+    conn.commit()
+
+def update_epic(gameid,id):
+    c.execute(f"update Gameid set epic = '{gameid}' where id = {id}")
+    conn.commit()
+
+def update_steam(gameid,id):
+    c.execute(f"update Gameid set steam = '{gameid}' where id = {id}")
+    conn.commit()
+
 # def show_data():
 #     c.execute("Select * from test")
 #     tdata = c.fetchall()
