@@ -4,7 +4,7 @@ conn = sqlite3.connect("botdata.db")
 
 c = conn.cursor()
 def insert_game_id(id,valo=None,rockstar=None,epic=None, steam=None,Quote="You can add your custom quote here by using $quote"):
-    c.execute(f"insert into Gameid values({id},'{valo}','{rockstar}','{epic}','{steam}')")
+    c.execute(f"insert into Gameid values({id},'{valo}','{rockstar}','{epic}','{steam}','{Quote}')")
     conn.commit()
 
 def dele():
