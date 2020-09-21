@@ -91,7 +91,17 @@ class MyClient(discord.Client):
 
         if message.content.lower().split()[0] == '$showid':
             if len(message.content.lower().split()) == 1:
-                pass #await message.channel.send(str(qsql.search_game_id(message.author.id)))
+               data = qsql.search_game_id(message.author.id)
+               if data != None:
+                   emd = discord.Embed(title="Game ID",description = "Game ID", color = 0x00ff00)
+                   emd.add_field(name = "Valorant", value=data[1],inline = False)
+                   emd.add_field(name = "Rockstar", value=data[2],inline = False)
+                   emd.add_field(name = "Epic Games", value=data[3],inline = False)
+                   emd.add_field(name = "Steam", value=data[4],inline = False)
+                   await message.channel.send(embed = emd)
+               else:
+                    await message.channel.send("No Record Found!!")
+                    
             elif len(message.content.lower().split()) == 2:
                 data = qsql.search_game_id(message.mentions[0].id)
                 if data != None:
