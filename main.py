@@ -93,7 +93,7 @@ class MyClient(discord.Client):
             if len(message.content.lower().split()) == 1:
                data = qsql.search_game_id(message.author.id)
                if data != None:
-                   emd = discord.Embed(title="Game ID",description = "Game ID", color = 0x00ff00)
+                   emd = discord.Embed(title=message.author.name,description = "Game ID                                                              ", color = 0x00ff00)
                    emd.add_field(name = "Valorant", value=data[1],inline = False)
                    emd.add_field(name = "Rockstar", value=data[2],inline = False)
                    emd.add_field(name = "Epic Games", value=data[3],inline = False)
@@ -101,11 +101,11 @@ class MyClient(discord.Client):
                    await message.channel.send(embed = emd)
                else:
                     await message.channel.send("No Record Found!!")
-                    
+
             elif len(message.content.lower().split()) == 2:
                 data = qsql.search_game_id(message.mentions[0].id)
                 if data != None:
-                    emd = discord.Embed(title="Game ID",description = "Game ID", color = 0x00ff00)
+                    emd = discord.Embed(title=message.mentions[0].name,description = "Game ID                                                             ", color = 0x00ff00)
                     emd.add_field(name = "Valorant", value=data[1],inline = False)
                     emd.add_field(name = "Rockstar", value=data[2],inline = False)
                     emd.add_field(name = "Epic Games", value=data[3],inline = False)
