@@ -31,9 +31,10 @@ def update_steam(gameid,id):
     c.execute(f"update Gameid set steam = '{gameid}' where id = {id}")
     conn.commit()
 
-def update_quote(quo,id):
-    c.execute(f"update Gameid set Quote = '{quo}' where id = {id}")
+def update_quote(gameid,id):
+    c.execute(f"update Gameid set Quote = '{gameid}' where id = {id}")
     conn.commit()
+
 
 # c.execute("Create table Gameid(id int primary key,valorant text, rockstar text, epic text, steam text)")
 # c.execute("Alter table Gameid add Quote text")
