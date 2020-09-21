@@ -58,6 +58,33 @@ class MyClient(discord.Client):
             else:
                 await message.channel.send("Invalid Parameter!!")
 
+        if message.content.lower().split()[0] == '$epic':
+            if len(message.content.lower().split()) == 2:
+                if qsql.search_game_id(message.author.id) != None:
+                    if validity_check.ID_validity_check(message.content.split()[1]):
+                        qsql.update_epic(message.content.split()[1],message.author.id)
+                        await message.channel.send("Saved suscessfully!!")
+                    else:
+                        await message.channel.send("Looks like that's not a valid ID! Please try again!")
+                else:
+                    await message.channel.send("You did not created record first create record and try again!!")
+            else:
+                await message.channel.send("Invalid Parameter!!")
+            
+        
+        if message.content.lower().split()[0] == '$steam':
+            if len(message.content.lower().split()) == 2:
+                if qsql.search_game_id(message.author.id) != None:
+                    if validity_check.ID_validity_check(message.content.split()[1]):
+                        qsql.update_steam(message.content.split()[1],message.author.id)
+                        await message.channel.send("Saved suscessfully!!")
+                    else:
+                        await message.channel.send("Looks like that's not a valid ID! Please try again!")
+                else:
+                    await message.channel.send("You did not created record first create record and try again!!")
+            else:
+                await message.channel.send("Invalid Parameter!!")
+
 
         
         if message.content.lower() == '$deleteid':
