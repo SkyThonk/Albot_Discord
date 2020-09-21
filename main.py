@@ -125,7 +125,8 @@ class MyClient(discord.Client):
             else:
                 l = message.content.split()
                 l = ' '.join(l[1:])
-                qsql.update_quote(l)
+                qsql.update_quote(l,message.author.id)
+                await message.channel.send("Saved suscessfully!!")
 client = MyClient()
 
 keep_alive.keep_alive()
